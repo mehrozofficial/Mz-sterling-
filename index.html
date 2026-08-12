@@ -1,18 +1,1210 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MZ Sterling | Premium Jewellery</title><style>:root{--b:#08090a;--c:#111315;--l:#2a2e32;--m:#9ca3aa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--b);color:#e8ebed;font-family:Arial,sans-serif}a{text-decoration:none;color:inherit}.nav{position:sticky;top:0;z-index:9;background:#08090af2;border-bottom:1px solid var(--l);padding:14px;display:flex;align-items:center;gap:14px}.logo{font-weight:800;letter-spacing:3px}.navlinks{margin-left:auto;display:flex;gap:18px;color:var(--m);font-size:14px}.btn,.order{border:0;border-radius:9px;padding:11px 15px;font-weight:700;cursor:pointer}.icon{background:var(--c);color:white;border:1px solid var(--l);border-radius:10px;width:40px;height:40px}.hero{min-height:530px;display:grid;place-items:center;text-align:center;padding:30px;background:radial-gradient(circle,#34393e,#121416 35%,#08090a 68%)}h1{font-size:clamp(42px,8vw,80px);letter-spacing:5px;margin:10px}.hero p{max-width:650px;color:var(--m);margin:auto}.btn{display:inline-block;margin-top:25px;background:white;color:#08090a}.section{max-width:1200px;margin:auto;padding:60px 16px}.section h2{margin:0 0 8px}.sub{color:var(--m);margin:0 0 25px}.cats,.grid,.reviews{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.cat,.product,.review{background:linear-gradient(145deg,#171a1d,#0e1012);border:1px solid var(--l);border-radius:15px;padding:18px}.cat{cursor:pointer}.cat span,.tag,.review p{color:var(--m);font-size:13px}.toolbar{display:flex;gap:10px;margin-bottom:22px}.search,select{background:var(--c);color:white;border:1px solid var(--l);padding:12px;border-radius:9px}.search{flex:1}.pic{height:190px;display:grid;place-items:center;font-size:55px;background:radial-gradient(circle,#363b40,#111315)}.info{padding-top:14px}.price{font-weight:800;margin:8px 0}.order{width:100%;background:white;color:#090a0b}.stars{letter-spacing:2px}.wa{position:fixed;right:16px;bottom:16px;background:#20bd68;color:white;padding:13px 18px;border-radius:999px;font-weight:800;z-index:10}.drawer{display:none;position:fixed;inset:0;background:#000b;z-index:20}.drawer.open{display:block}.panel{width:310px;height:100%;background:#0d0f11;padding:24px}.panel a{display:block;padding:14px 0;border-bottom:1px solid var(--l)}@media(max-width:800px){.navlinks{display:none}.cats,.grid,.reviews{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.cats,.grid,.reviews{grid-template-columns:1fr 1fr}.pic{height:150px}.section{padding:45px 12px}}</style></head><body>
-<header class="nav"><button class="icon" onclick="menu()">☰</button><div class="logo">MZ STERLING</div><nav class="navlinks"><a href="#home">Home</a><a href="#shop">Shop</a><a href="#men">Men</a><a href="#women">Women</a><a href="#reviews">Reviews</a></nav><button class="icon" onclick="searchFocus()">⌕</button></header>
-<div id="drawer" class="drawer" onclick="if(event.target.id==='drawer')menu()"><div class="panel"><button class="icon" onclick="menu()">×</button><h2>Categories</h2><a href="#shop" onclick="cat('All')">All Jewellery</a><a href="#shop" onclick="cat('Rings')">Rings</a><a href="#shop" onclick="cat('Chains')">Chains</a><a href="#shop" onclick="cat('Bracelets')">Bracelets</a><a href="#shop" onclick="cat('Pendants')">Pendants</a><a href="#shop" onclick="cat('Earrings')">Earrings / Tops</a><a href="#shop" onclick="cat('Nose Rings')">Nose Rings</a></div></div>
-<section id="home" class="hero"><div><div class="logo">MZ STERLING</div><h1>WEAR THE SHINE.</h1><p>Premium jewellery for men and women. Delivery all Pakistan · Cash on Delivery.</p><a class="btn" href="#shop">SHOP COLLECTION</a></div></section>
-<section id="men" class="section"><h2>Men's Collection</h2><p class="sub">Bold, premium and stylish pieces.</p><div class="cats"><div class="cat" onclick="cat('Rings')"><b>Rings</b><span>18 designs</span></div><div class="cat" onclick="cat('Chains')"><b>Chains</b><span>15 designs</span></div><div class="cat" onclick="cat('Bracelets')"><b>Bracelets</b><span>15 designs</span></div><div class="cat" onclick="cat('Pendants')"><b>Pendants</b><span>11 designs</span></div></div></section>
-<section id="women" class="section"><h2>Women's Collection</h2><p class="sub">Elegant silver styling.</p><div class="cats"><div class="cat" onclick="cat('Rings')"><b>Rings</b><span>Sizes 14 · 15 · 16 · 17</span></div><div class="cat" onclick="cat('Bracelets')"><b>Bracelets</b><span>Selected collection</span></div><div class="cat" onclick="cat('Chains')"><b>Chains & Necklaces</b><span>Selected collection</span></div><div class="cat" onclick="cat('Earrings')"><b>Earrings / Tops</b><span>10 active designs</span></div><div class="cat" onclick="cat('Nose Rings')"><b>Nose Rings</b><span>11 active designs</span></div></div></section>
-<section id="shop" class="section"><h2>Shop Jewellery</h2><p class="sub">Search, choose a category and order on WhatsApp.</p><div class="toolbar"><input id="q" class="search" placeholder="Search jewellery..." oninput="render()"><select id="f" onchange="render()"><option>All</option><option>Rings</option><option>Chains</option><option>Bracelets</option><option>Pendants</option><option>Earrings</option><option>Nose Rings</option></select></div><div id="grid" class="grid"></div></section>
-<section id="reviews" class="section"><h2>Customer Reviews</h2><p class="sub">A clean 4★/5★ review layout.</p><div class="reviews"><div class="review"><div class="stars">★★★★★</div><p>Beautiful quality and premium look.</p><b>Hassan</b></div><div class="review"><div class="stars">★★★★☆</div><p>Fast response and nice packaging.</p><b>Areeba</b></div><div class="review"><div class="stars">★★★★★</div><p>Loved the bracelet, looks expensive.</p><b>Ali</b></div><div class="review"><div class="stars">★★★★☆</div><p>Very stylish pendant.</p><b>Mahnoor</b></div></div></section><footer class="section" style="text-align:center;border-top:1px solid var(--l);color:var(--m)"><b style="color:white">MZ STERLING</b><br>Customer Care · WhatsApp Orders · All Pakistan Delivery</footer><a class="wa" href="https://wa.me/923018951099" target="_blank">💬 WhatsApp</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MZ Sterling | Fine Jewellery</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:#fff;
+}
+
+button,a{
+    font-family:inherit;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================
+   OPENING SCREEN
+========================= */
+
+#welcome{
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:35px 18px;
+    background:
+        linear-gradient(rgba(5,5,5,.70),rgba(5,5,5,.90)),
+        url("images/welcome.jpg") center/cover no-repeat;
+}
+
+.welcome-inner{
+    width:100%;
+    max-width:1050px;
+}
+
+.brand-small{
+    letter-spacing:7px;
+    font-size:13px;
+    color:#c9b07a;
+    margin-bottom:22px;
+}
+
+.logo-title{
+    font-family:Georgia,serif;
+    font-size:clamp(42px,8vw,82px);
+    letter-spacing:8px;
+    font-weight:400;
+}
+
+.logo-sub{
+    letter-spacing:8px;
+    font-size:11px;
+    color:#aaa;
+    margin-top:8px;
+}
+
+.welcome-line{
+    width:70px;
+    height:1px;
+    background:#c9a85c;
+    margin:30px auto;
+}
+
+.welcome-heading{
+    font-family:Georgia,serif;
+    font-size:clamp(38px,7vw,72px);
+    font-weight:400;
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.welcome-text{
+    color:#aaa;
+    font-size:16px;
+    line-height:1.7;
+    margin:auto;
+    max-width:600px;
+}
+
+.choice-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:42px;
+}
+
+.choice{
+    min-height:220px;
+    border:1px solid #4b4030;
+    background:rgba(20,20,20,.72);
+    padding:35px 20px;
+    cursor:pointer;
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.choice:hover{
+    border-color:#d1b26b;
+    transform:translateY(-5px);
+    background:#171717;
+}
+
+.choice-icon{
+    font-size:34px;
+    margin-bottom:20px;
+    color:#d5b46b;
+}
+
+.choice h2{
+    font-family:Georgia,serif;
+    font-size:27px;
+    letter-spacing:3px;
+    font-weight:400;
+}
+
+.choice p{
+    color:#999;
+    margin-top:12px;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+.choice-btn{
+    margin-top:22px;
+    border:1px solid #c9a85c;
+    padding:11px 30px;
+    color:#fff;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   SHOP
+========================= */
+
+#shop{
+    display:none;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:78px;
+    background:rgba(7,7,7,.96);
+    border-bottom:1px solid #292929;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+}
+
+.header-logo{
+    font-family:Georgia,serif;
+    letter-spacing:5px;
+    font-size:24px;
+}
+
+.header-logo span{
+    display:block;
+    font-family:Arial,sans-serif;
+    letter-spacing:5px;
+    font-size:8px;
+    color:#999;
+    text-align:center;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    font-size:12px;
+    letter-spacing:1px;
+    color:#ccc;
+}
+
+nav a:hover{
+    color:#d6b66d;
+}
+
+.menu-btn{
+    display:none;
+    font-size:24px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:570px;
+    display:flex;
+    align-items:center;
+    padding:70px 7%;
+    background:
+        linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.70) 48%,rgba(0,0,0,.35)),
+        url("images/hero.jpg") center/cover no-repeat;
+}
+
+.hero-content{
+    max-width:620px;
+}
+
+.hero-kicker{
+    color:#c9ab6b;
+    letter-spacing:5px;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(44px,6vw,78px);
+    font-weight:400;
+    line-height:1.02;
+}
+
+.hero h1 span{
+    color:#d0b16d;
+}
+
+.hero p{
+    color:#c2c2c2;
+    margin:25px 0;
+    line-height:1.8;
+    max-width:520px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border:1px solid #c9a85c;
+    font-size:12px;
+    letter-spacing:2px;
+    margin-right:10px;
+    transition:.3s;
+}
+
+.btn.gold{
+    background:#c9a85c;
+    color:#090909;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.section{
+    padding:75px 5%;
+    border-bottom:1px solid #242424;
+}
+
+.section-title{
+    text-align:center;
+    font-family:Georgia,serif;
+    font-size:34px;
+    font-weight:400;
+    letter-spacing:3px;
+}
+
+.section-sub{
+    text-align:center;
+    color:#888;
+    margin:12px auto 40px;
+}
+
+.category-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.category{
+    height:230px;
+    display:flex;
+    align-items:flex-end;
+    padding:22px;
+    background:
+        linear-gradient(transparent,rgba(0,0,0,.9)),
+        url("images/category.jpg") center/cover;
+    border:1px solid #383838;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category:nth-child(2){
+    background:
+        linear-gradient(transparent,rgba(0,0,0,.9)),
+        url("images/category-women.jpg") center/cover;
+}
+
+.category:nth-child(3){
+    background:
+        linear-gradient(transparent,rgba(0,0,0,.9)),
+        url("images/category-nose-rings.jpg") center/cover;
+}
+
+.category:nth-child(4){
+    background:
+        linear-gradient(transparent,rgba(0,0,0,.9)),
+        url("images/category-tops.jpg") center/cover;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    border-color:#c9a85c;
+}
+
+.category h3{
+    font-family:Georgia,serif;
+    font-size:23px;
+    font-weight:400;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:35px;
+}
+
+.tab{
+    background:transparent;
+    color:#aaa;
+    border:1px solid #333;
+    padding:12px 20px;
+    cursor:pointer;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+.tab.active,
+.tab:hover{
+    color:#111;
+    background:#c9a85c;
+    border-color:#c9a85c;
+}
+
+.products{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+
+.product{
+    border:1px solid #343434;
+    background:#111;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.product:hover{
+    border-color:#c9a85c;
+    transform:translateY(-4px);
+}
+
+.product-image{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+    background:#181818;
+}
+
+.product-info{
+    padding:15px;
+}
+
+.product-name{
+    font-size:14px;
+    margin-bottom:9px;
+}
+
+.price{
+    color:#d2b16b;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.order-small{
+    display:block;
+    text-align:center;
+    margin-top:14px;
+    padding:9px;
+    border:1px solid #276d40;
+    color:#5ee18a;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.info-section{
+    padding:65px 5%;
+    background:
+        linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.92)),
+        url("images/info.jpg") center/cover;
+}
+
+.info-grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    text-align:center;
+}
+
+.info-box{
+    padding:25px 15px;
+    border-right:1px solid #333;
+}
+
+.info-box:last-child{
+    border-right:0;
+}
+
+.info-icon{
+    color:#d0ad64;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.info-box h3{
+    font-family:Georgia,serif;
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.info-box p{
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    padding:70px 5%;
+    text-align:center;
+}
+
+.contact h2{
+    font-family:Georgia,serif;
+    font-weight:400;
+    font-size:38px;
+}
+
+.contact p{
+    color:#999;
+    margin:15px 0 25px;
+}
+
+.contact-details{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    color:#ccc;
+    font-size:14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid #292929;
+    padding:55px 5% 25px;
+    text-align:center;
+}
+
+.footer-logo{
+    font-family:Georgia,serif;
+    font-size:30px;
+    letter-spacing:5px;
+}
+
+.footer-sub{
+    color:#888;
+    font-size:10px;
+    letter-spacing:4px;
+    margin-top:8px;
+}
+
+.footer-links{
+    margin:30px 0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    color:#888;
+    font-size:12px;
+}
+
+.footer-copy{
+    color:#666;
+    font-size:11px;
+    margin-top:25px;
+}
+
+.developed{
+    margin-top:22px;
+    padding-top:22px;
+    border-top:1px solid #292929;
+    font-size:clamp(18px,3vw,28px);
+    letter-spacing:1px;
+    color:#eee;
+    font-weight:bold;
+}
+
+.developed span{
+    color:#d1b06a;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp{
+    display:none;
+    position:fixed;
+    right:20px;
+    bottom:22px;
+    z-index:2000;
+    width:190px;
+    height:70px;
+    border-radius:45px;
+    background:#090909;
+    border:2px solid #555;
+    box-shadow:0 8px 30px rgba(0,0,0,.65);
+    align-items:center;
+    padding:8px 15px;
+    gap:13px;
+    transition:.3s;
+}
+
+.whatsapp:hover{
+    transform:translateY(-4px);
+    border-color:#25d366;
+}
+
+.whatsapp-icon{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    border-radius:50%;
+    background:#25d366;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    color:white;
+}
+
+.whatsapp-text{
+    font-size:12px;
+    line-height:1.3;
+}
+
+.whatsapp-text strong{
+    display:block;
+    font-size:16px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:850px){
+
+    header{
+        height:70px;
+        padding:0 20px;
+    }
+
+    .header-logo{
+        font-size:18px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .choice-grid{
+        grid-template-columns:1fr;
+        max-width:430px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .choice{
+        min-height:150px;
+    }
+
+    .hero{
+        min-height:600px;
+        padding:70px 25px;
+        background:
+            linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.90)),
+            url("images/hero.jpg") center/cover;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .info-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .info-box{
+        border-right:0;
+        border-bottom:1px solid #333;
+    }
+
+    .whatsapp{
+        width:180px;
+        height:64px;
+        right:15px;
+        bottom:15px;
+    }
+}
+
+@media(max-width:500px){
+
+    .logo-title{
+        font-size:42px;
+        letter-spacing:5px;
+    }
+
+    .welcome-heading{
+        font-size:40px;
+    }
+
+    .welcome-text{
+        font-size:14px;
+    }
+
+    .choice{
+        min-height:135px;
+    }
+
+    .section{
+        padding:55px 18px;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .category{
+        height:190px;
+        padding:15px;
+    }
+
+    .category h3{
+        font-size:18px;
+    }
+
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .product-info{
+        padding:10px;
+    }
+
+    .product-name{
+        font-size:12px;
+    }
+
+    .price{
+        font-size:12px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .contact-details{
+        flex-direction:column;
+        gap:14px;
+    }
+
+    .whatsapp{
+        width:175px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     OPENING
+========================= -->
+
+<section id="welcome">
+
+<div class="welcome-inner">
+
+<div class="brand-small">WELCOME TO</div>
+
+<div class="logo-title">MZ STERLING</div>
+
+<div class="logo-sub">925 STERLING SILVER</div>
+
+<div class="welcome-line"></div>
+
+<h1 class="welcome-heading">
+Choose Your Collection
+</h1>
+
+<p class="welcome-text">
+Premium jewellery for men and women.
+<br>
+Delivery All Pakistan · Cash on Delivery
+</p>
+
+<div class="choice-grid">
+
+<div class="choice" onclick="enterShop('men')">
+<div class="choice-icon">♔</div>
+<h2>MEN</h2>
+<p>Bold · Refined · Modern</p>
+<div class="choice-btn">ENTER</div>
+</div>
+
+<div class="choice" onclick="enterShop('women')">
+<div class="choice-icon">♢</div>
+<h2>WOMEN</h2>
+<p>Elegant · Timeless · Modern</p>
+<div class="choice-btn">ENTER</div>
+</div>
+
+<div class="choice" onclick="enterShop('both')">
+<div class="choice-icon">◇</div>
+<h2>SHOP BOTH</h2>
+<p>Explore All Collections</p>
+<div class="choice-btn">ENTER</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SHOP
+========================= -->
+
+<section id="shop">
+
+<header>
+
+<div class="menu-btn">☰</div>
+
+<div class="header-logo">
+MZ STERLING
+<span>925 STERLING SILVER</span>
+</div>
+
+<nav>
+<a href="#home">HOME</a>
+<a href="#categories">CATEGORIES</a>
+<a href="#products">SHOP</a>
+<a href="#contact">CONTACT</a>
+</nav>
+
+<div style="font-size:22px;">⌕</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="hero-kicker">MZ STERLING</div>
+
+<h1>
+Timeless Elegance<br>
+in <span>Sterling Silver.</span>
+</h1>
+
+<p>
+Crafted with passion. Designed for style.
+Premium jewellery for those who value quality.
+</p>
+
+<a href="#products" class="btn gold">SHOP NOW</a>
+
+<a href="#categories" class="btn">VIEW COLLECTIONS</a>
+
+</div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="section" id="categories">
+
+<h2 class="section-title">SHOP BY CATEGORY</h2>
+
+<p class="section-sub">
+Discover our jewellery collections
+</p>
+
+<div class="category-grid">
+
+<div class="category" onclick="showCategory('men')">
+<h3>MEN</h3>
+</div>
+
+<div class="category" onclick="showCategory('women')">
+<h3>WOMEN</h3>
+</div>
+
+<div class="category" onclick="showCategory('nose')">
+<h3>NOSE RINGS</h3>
+</div>
+
+<div class="category" onclick="showCategory('tops')">
+<h3>TOPS</h3>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+<h2 class="section-title">OUR COLLECTION</h2>
+
+<p class="section-sub">
+Premium pieces selected for MZ Sterling
+</p>
+
+<div class="tabs">
+
+<button class="tab active" onclick="showCategory('men',this)">
+MEN
+</button>
+
+<button class="tab" onclick="showCategory('women',this)">
+WOMEN
+</button>
+
+<button class="tab" onclick="showCategory('nose',this)">
+NOSE RINGS
+</button>
+
+<button class="tab" onclick="showCategory('tops',this)">
+TOPS
+</button>
+
+</div>
+
+
+<div class="products" id="productGrid">
+
+<!-- PRODUCT 1 -->
+<div class="product" data-category="men">
+<img class="product-image" src="images/men-01.jpg" alt="Men Jewellery">
+<div class="product-info">
+<div class="product-name">Men's Silver Ring</div>
+<div class="price">Rs. 0</div>
+<a class="order-small" href="https://wa.me/923018951099">
+ORDER ON WHATSAPP
+</a>
+</div>
+</div>
+
+
+<!-- PRODUCT 2 -->
+<div class="product" data-category="men">
+<img class="product-image" src="images/men-02.jpg" alt="Men Jewellery">
+<div class="product-info">
+<div class="product-name">Silver Chain</div>
+<div class="price">Rs. 0</div>
+<a class="order-small" href="https://wa.me/923018951099">
+ORDER ON WHATSAPP
+</a>
+</div>
+</div>
+
+
+<!-- PRODUCT 3 -->
+<div class="product" data-category="women">
+<img class="product-image" src="images/women-01.jpg" alt="Women Jewellery">
+<div class="product-info">
+<div class="product-name">Women's Necklace</div>
+<div class="price">Rs. 0</div>
+<a class="order-small" href="https://wa.me/923018951099">
+ORDER ON WHATSAPP
+</a>
+</div>
+</div>
+
+
+<!-- PRODUCT 4 -->
+<div class="product" data-category="women">
+<img class="product-image" src="images/women-02.jpg" alt="Women Jewellery">
+<div class="product-info">
+<div class="product-name">Silver Bracelet</div>
+<div class="price">Rs. 0</div>
+<a class="order-small" href="https://wa.me/923018951099">
+ORDER ON WHATSAPP
+</a>
+</div>
+</div>
+
+
+<!-- PRODUCT 5 -->
+<div class="product" data-category="nose">
+<img class="product-image" src="images/nose-01.jpg" alt="Nose Ring">
+<div class="product-info">
+<div class="product-name">Silver Nose Ring</div>
+<div class="price">Rs. 150</div>
+<a class="order-small" href="https://wa.me/923018951099">
+ORDER ON WHATSAPP
+</a>
+</div>
+</div>
+
+
+<!-- PRODUCT 6 -->
+<div class="product" data-category="tops">
+<img class="product-image" src="images/tops-01.jpg" alt="Tops">
+<div class="product-info">
+<div class="product-name">Bangkok Import Tops</div>
+<div class="price">Rs. 550</div>
+<a class="order-small" href="https://wa.me/923018951099">
+ORDER ON WHATSAPP
+</a>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WHY CHOOSE -->
+
+<section class="info-section">
+
+<div class="info-grid">
+
+<div class="info-box">
+<div class="info-icon">♢</div>
+<h3>Premium 925 Sterling Silver</h3>
+<p>Authentic & quality jewellery.</p>
+</div>
+
+<div class="info-box">
+<div class="info-icon">✦</div>
+<h3>Skilled Craftsmanship</h3>
+<p>Fine quality work with attention to detail.</p>
+</div>
+
+<div class="info-box">
+<div class="info-icon">◇</div>
+<h3>Unique Designs</h3>
+<p>Designed to stand out.</p>
+</div>
+
+<div class="info-box">
+<div class="info-icon">♧</div>
+<h3>Customer Satisfaction</h3>
+<p>Your satisfaction is our priority.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2>CONTACT MZ STERLING</h2>
+
+<p>
+For orders, questions and jewellery enquiries
+</p>
+
+<div class="contact-details">
+
+<div>☎ 0301-8951099</div>
+
+<div>
+<a href="https://wa.me/923018951099">
+WhatsApp: 0301-8951099
+</a>
+</div>
+
+<div>
+✉ info@mzsterling.com
+</div>
+
+<div>
+⌖ Lahore, Pakistan
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-logo">
+MZ STERLING
+</div>
+
+<div class="footer-sub">
+925 STERLING SILVER · FINE JEWELLERY
+</div>
+
+<div class="footer-links">
+<a href="#home">Home</a>
+<a href="#categories">Categories</a>
+<a href="#products">Shop</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div class="footer-copy">
+© 2026 MZ Sterling. All Rights Reserved.
+</div>
+
+<div class="developed">
+Powered and developed by <span>Mehroz Sheikh</span> ♛
+</div>
+
+</footer>
+
+</section>
+
+
+<!-- =========================
+     FLOATING WHATSAPP
+========================= -->
+
+<a
+class="whatsapp"
+id="whatsappButton"
+href="https://wa.me/923018951099"
+target="_blank"
+>
+
+<div class="whatsapp-icon">☎</div>
+
+<div class="whatsapp-text">
+Order on
+<strong>WhatsApp</strong>
+</div>
+
+</a>
+
+
 <script>
-const P=[
-['Men','Rings','Luxury Black Stone Ring',4699,'💍'],['Men','Rings','Rectangular Signet Ring',4599,'💍'],['Men','Rings','Twisted Silver Ring',4299,'💍'],['Men','Rings','Oval Black Stone Ring',4999,'💍'],['Men','Rings','Vintage Silver Ring',4699,'💍'],['Men','Rings','Wide Engraved Ring',4999,'💍'],['Men','Rings','Black Rectangular Stone Ring',5299,'💍'],['Men','Rings','Tiger Eye Stone Ring',5499,'💍'],['Men','Rings','Emerald Green Stone Ring',5499,'💍'],['Men','Rings','Red Garnet Stone Ring',5599,'💍'],['Men','Rings','Blue Stone Signet Ring',5499,'💍'],['Men','Rings','Compass Ring',4899,'💍'],['Men','Rings','Cross Engraved Ring',4699,'💍'],['Men','Rings','Snake Design Ring',4999,'💍'],['Men','Rings','Hammered Wide Band',4899,'💍'],['Men','Rings','Gothic Engraved Ring',5499,'💍'],
-['Men','Chains','Cuban Link Chain',8499,'⛓️'],['Men','Chains','Miami Cuban Chain',9499,'⛓️'],['Men','Chains','Franco Chain',7999,'⛓️'],['Men','Chains','Rope Chain',6999,'⛓️'],['Men','Chains','Figaro Chain',7499,'⛓️'],['Men','Chains','Box Chain',6499,'⛓️'],['Men','Chains','Wheat Chain',7999,'⛓️'],['Men','Chains','Snake Chain',6999,'⛓️'],['Men','Chains','Mariner Anchor Chain',8499,'⛓️'],['Men','Chains','Byzantine Chain',8999,'⛓️'],['Men','Chains','Heavy Curb Chain',9499,'⛓️'],['Men','Chains','Bold Paperclip Chain',7999,'⛓️'],['Men','Chains','Spiga Chain',7499,'⛓️'],['Men','Chains','Popcorn Chain',6999,'⛓️'],['Men','Chains','Mixed Link Chain',8999,'⛓️'],
-['Men','Bracelets','Cuban Link Bracelet',5999,'💎'],['Men','Bracelets','Miami Cuban Bracelet',6999,'💎'],['Men','Bracelets','Franco Bracelet',6499,'💎'],['Men','Bracelets','Rope Bracelet',5499,'💎'],['Men','Bracelets','Figaro Bracelet',5999,'💎'],['Men','Bracelets','Box Chain Bracelet',5299,'💎'],['Men','Bracelets','Wheat Bracelet',6499,'💎'],['Men','Bracelets','Black Onyx Stone Bracelet',6999,'💎'],['Men','Bracelets','Tiger Eye Stone Bracelet',7499,'💎'],['Men','Bracelets','Black Zircon Heavy Bracelet',7999,'💎'],['Men','Bracelets','Blue Stone Statement Bracelet',7499,'💎'],['Men','Bracelets','Emerald Green Stone Bracelet',7999,'💎'],['Men','Bracelets','Skull Stone Bracelet',7499,'💎'],['Men','Bracelets','Lion Statement Bracelet',7999,'💎'],['Men','Bracelets','Chunky Stone-Bead Bracelet',6999,'💎'],
-['Men','Pendants','Rectangular Zircon Pendant',4599,'📿'],['Men','Pendants','Oval Black Onyx Pendant',5099,'📿'],['Men','Pendants','Chunky Modern Pendant',5599,'📿'],['Men','Pendants','Vintage Coin Pendant',4599,'📿'],['Men','Pendants','Luxury Medallion Pendant',5099,'📿'],['Men','Pendants','Diamond-Cut Pendant',5399,'📿'],['Men','Pendants','Flat Designer Pendant',4599,'📿'],['Men','Pendants','Abstract Luxury Pendant',5099,'📿'],['Men','Pendants','Pearl Pendant',4899,'📿'],['Men','Pendants','Black Enamel Pendant',5099,'📿'],['Men','Pendants','Engraved Medallion Pendant',5399,'📿'],
-['Women','Earrings','Zircon Studs',2299,'✨'],['Women','Earrings','Huggie Hoops',2399,'✨'],['Women','Earrings','Pearl Drop Earrings',2599,'✨'],['Women','Earrings','Butterfly Earrings',2499,'✨'],['Women','Earrings','Heart Drop Earrings',2699,'✨'],['Women','Earrings','Teardrop Zircon',2999,'✨'],['Women','Earrings','Flower Studs',2499,'✨'],['Women','Earrings','Geometric Drops',2899,'✨'],['Women','Earrings','Bow Zircon Earrings',2799,'✨'],['Women','Earrings','Oval Drop Earrings',2999,'✨'],
-['Women','Nose Rings','Tiny Zircon Stud',250,'◌'],['Women','Nose Rings','Classic Silver Hoop',230,'◌'],['Women','Nose Rings','Flower Nose Ring',299,'◌'],['Women','Nose Rings','Heart Zircon Stud',310,'◌'],['Women','Nose Rings','Butterfly Nose Ring',350,'◌'],['Women','Nose Rings','Twisted Hoop Nose Ring',299,'◌'],['Women','Nose Rings','Star Nose Stud',320,'◌'],['Women','Nose Rings','Crescent Moon Nose Ring',399,'◌'],['Women','Nose Rings','Leaf Nose Ring',399,'◌'],['Women','Nose Rings','Cluster Zircon Stud',455,'◌'],['Women','Nose Rings','Multicolor Stone Nose Ring',510,'◌']];
-function money(n){return 'Rs. '+n.toLocaleString('en-PK')}function render(){let q=document.getElementById('q').value.toLowerCase(),f=document.getElementById('f').value,g=document.getElementById('grid');g.innerHTML='';P.filter(x=>(f==='All'||x[1]===f)&&(!q||x[2].toLowerCase().includes(q))).forEach((p,i)=>{let d=document.createElement('article');d.className='product';d.innerHTML='<div class="pic">'+p[4]+'</div><div class="info"><h3>'+p[2]+'</h3><div class="tag">'+p[0]+' · '+p[1]+'</div><div class="price">'+money(p[3])+'</div>'+(p[1]==='Rings'?'<div class="tag">Sizes: '+(p[0]==='Women'?'14 · 15 · 16 · 17':'16 · 18 · 19 · 20')+'</div>':'')+'<button class="order" onclick="order('+i+')">Order on WhatsApp</button></div>';d.dataset.idx=P.indexOf(p);g.appendChild(d)})}function order(i){let p=P[i],s=p[1]==='Rings'?prompt('Enter ring size: '+(p[0]==='Women'?'14, 15, 16 or 17':'16, 18, 19 or 20'),''):'';let m='Assalam-o-Alaikum, I want to order: '+p[2]+'. Price: '+money(p[3])+'.'+(s?' Size: '+s+'.':'')+' Please confirm availability.';open('https://wa.me/923018951099?text='+encodeURIComponent(m),'_blank')}function cat(c){document.getElementById('f').value=c;document.getElementById('shop').scrollIntoView({behavior:'smooth'});render();menu()}function menu(){document.getElementById('drawer').classList.toggle('open')}function searchFocus(){document.getElementById('shop').scrollIntoView({behavior:'smooth'});setTimeout(()=>document.getElementById('q').focus(),400)}render();
-</script></body></html>
+
+/* =========================
+   ENTER SHOP
+========================= */
+
+function enterShop(type){
+
+    document.getElementById("welcome").style.display="none";
+
+    document.getElementById("shop").style.display="block";
+
+    /*
+       WhatsApp is intentionally hidden
+       on opening screen.
+       It appears only after entering shop.
+    */
+
+    document.getElementById("whatsappButton").style.display="flex";
+
+    if(type==="men"){
+        showCategory("men");
+    }
+
+    if(type==="women"){
+        showCategory("women");
+    }
+
+    if(type==="both"){
+        showCategory("men");
+    }
+
+    window.scrollTo(0,0);
+}
+
+
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+function showCategory(category,button){
+
+    const products=document.querySelectorAll(".product");
+
+    products.forEach(function(product){
+
+        if(category==="both"){
+            product.style.display="block";
+        }
+
+        else if(product.dataset.category===category){
+            product.style.display="block";
+        }
+
+        else{
+            product.style.display="none";
+        }
+
+    });
+
+
+    document.querySelectorAll(".tab").forEach(function(tab){
+        tab.classList.remove("active");
+    });
+
+    if(button){
+        button.classList.add("active");
+    }
+
+    document.getElementById("products").scrollIntoView({
+        behavior:"smooth"
+    });
+}
+
+
+/* =======================
